@@ -34,10 +34,10 @@
 
 (setq org-capture-templates
       '(
-	("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments") "* APPT %? \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n DEADLINE: %^T \n %i\n")
-	("s" "Stuff" entry (file "~/Dropbox/orgfiles/index.org") "* STUFF %? \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
-	("n" "Next" entry (file+headline "~/Dropbox/orgfiles/index.org" "Next Actions") "* NEXT %?\n \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
-
+	("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
+	 "* APPT %? \nDEADLINE: %^T \n %i\n")
+	("s" "Stuff" entry (file "~/Dropbox/orgfiles/index.org")
+	 "* STUFF %? \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
 	))
 
 (setq org-todo-keywords

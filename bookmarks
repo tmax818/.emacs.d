@@ -4,8 +4,8 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/orgfiles/index.org")
- (front-context-string . "* STUFF learn em")
- (rear-context-string . "ex.org (in box)\n")
- (position . 29)
- (last-modified 26443 34317 509687 28000))
+ (front-context-string . "** APPT CSET: Ma")
+ (rear-context-string . "hu 08:00 -18m> \n")
+ (position . 422)
+ (last-modified 26445 1495 491652 10000))
 )

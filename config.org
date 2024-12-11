@@ -1,16 +1,13 @@
 #+title: config.org
-#+startup: content
+#+startup: overview
 
 * Information
-
-
-
 
 * basic interface settings
 
 ** remove startup screen
 #+begin_src emacs-lisp
-(setq inhibit-startup-message t)
+;(setq inhibit-startup-message t)
 #+end_src
 
 ** disable backup and auto-saves
@@ -76,6 +73,8 @@ I am following [[https://github.com/daedreth/UncleDavesEmacs][uncle dave]] here.
 
 ** mark-multiple
 
+I don't know how to use this yet.
+
 #+begin_src emacs-lisp
 (use-package mark-multiple
   :ensure t
@@ -100,7 +99,7 @@ I am following [[https://github.com/daedreth/UncleDavesEmacs][uncle dave]] here.
 *UNDER DEV*
 
 #+begin_src emacs-lisp
-
+;(setq org-agenda-include-diary t)
 
 #+end_src
 
@@ -111,20 +110,21 @@ At this point I am only using the ~index.org~ file.
 
 #+begin_src emacs-lisp
   (setq org-directory "~/Dropbox/orgfiles")
-  (setq org-agenda-files (list "index.org" "projects.org" "stuff.org" ))
+  (setq org-agenda-files (list "index.org"))
 #+end_src
 
 
 ** org capture templates
 
 #+begin_src emacs-lisp
-       (setq org-capture-templates
-	     '(
-	       ("a" "Appt" entry (file "~/Dropbox/orgfiles/index.org")
-		"* APPT %? \nDEADLINE: %^T \n %i\n")
-	       ("s" "Stuff" entry (file "~/Dropbox/orgfiles/index.org")
-		"* STUFF %? \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
-	       ))
+  (setq org-capture-templates
+	'(
+	  ("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
+	   "** APPT %? \nDEADLINE: %^T \n %i\n")
+	  
+	  ("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Stuff")
+	   "** STUFF %? \n:PROPERTIES:\n:created_at: %u \n:END:\n\n")
+	  ))
 
 
   #+end_src
@@ -167,8 +167,12 @@ At this point I am only using the ~index.org~ file.
 
 
 
-* avy
+* emacs calendar settings
 
-* IDO
+** change diary location
 
+#+begin_src emacs-lisp
+(setq diary-file "~/Dropbox/diary")
+  
 
+#+end_src

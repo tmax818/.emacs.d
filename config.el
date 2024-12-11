@@ -1,4 +1,4 @@
-(setq inhibit-startup-message t)
+;(setq inhibit-startup-message t)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -27,17 +27,18 @@
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
-
+;(setq org-agenda-include-diary t)
 
 (setq org-directory "~/Dropbox/orgfiles")
-(setq org-agenda-files (list "index.org" "projects.org" "stuff.org" ))
+(setq org-agenda-files (list "index.org"))
 
 (setq org-capture-templates
       '(
 	("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
-	 "* APPT %? \nDEADLINE: %^T \n %i\n")
-	("s" "Stuff" entry (file "~/Dropbox/orgfiles/index.org")
-	 "* STUFF %? \n\n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
+	 "** APPT %? \nDEADLINE: %^U \n %i\n")
+
+	("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Stuff")
+	 "** STUFF %? \n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
 	))
 
 (setq org-todo-keywords
@@ -56,3 +57,5 @@
       ))
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+
+(setq diary-file "~/Dropbox/diary")

@@ -3,6 +3,7 @@
 
 * Information
 
+
 * basic interface settings
 
 ** remove startup screen
@@ -71,14 +72,26 @@ I am following [[https://github.com/daedreth/UncleDavesEmacs][uncle dave]] here.
 #+end_src
 
 
+** marginalia
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :ensure t
+    :init
+    (marginalia-mode))
+#+end_src
+
+
 ** mark-multiple
 
 I don't know how to use this yet.
 
+
+
+** slime
+
 #+begin_src emacs-lisp
-(use-package mark-multiple
-  :ensure t
-  :bind ("C-c q" . 'mark-next-like-this))
+(setq inferior-lisp-program "clisp")
 #+end_src
 
 
@@ -117,14 +130,14 @@ At this point I am only using the ~index.org~ file.
 ** org capture templates
 
 #+begin_src emacs-lisp
-  (setq org-capture-templates
-	'(
-	  ("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
-	   "** APPT %? \nDEADLINE: %^T \n %i\n")
+    (setq org-capture-templates
+	  '(
+	    ("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
+	     "** APPT %? \nDEADLINE: %^T \n %i\n")
 	  
-	  ("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Stuff")
-	   "** STUFF %? \n:PROPERTIES:\n:created_at: %u \n:END:\n\n")
-	  ))
+	    ("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Capture")
+	     "** STUFF %? \n:PROPERTIES:\n:created_at: %u \n:END:\n\n")
+	    ))
 
 
   #+end_src
@@ -176,3 +189,5 @@ At this point I am only using the ~index.org~ file.
   
 
 #+end_src
+
+

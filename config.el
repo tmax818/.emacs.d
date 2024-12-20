@@ -21,9 +21,12 @@
 :ensure t
     :init (vertico-mode))
 
-(use-package mark-multiple
+(use-package marginalia
   :ensure t
-  :bind ("C-c q" . 'mark-next-like-this))
+  :init
+  (marginalia-mode))
+
+(setq inferior-lisp-program "clisp")
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
@@ -35,10 +38,10 @@
 (setq org-capture-templates
       '(
 	("a" "Appt" entry (file+headline "~/Dropbox/orgfiles/index.org" "Appointments")
-	 "** APPT %? \nDEADLINE: %^U \n %i\n")
+	 "** APPT %? \nDEADLINE: %^T \n %i\n")
 
-	("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Stuff")
-	 "** STUFF %? \n:PROPERTIES:\n:created_at: %T \n:END:\n\n")
+	("s" "Stuff" entry (file+headline "~/Dropbox/orgfiles/index.org" "Capture")
+	 "** STUFF %? \n:PROPERTIES:\n:created_at: %u \n:END:\n\n")
 	))
 
 (setq org-todo-keywords

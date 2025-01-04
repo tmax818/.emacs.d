@@ -1,0 +1,35 @@
+
+;; global line numbers
+(global-display-line-numbers-mode 1)
+
+;; global visual line mode
+(visual-line-mode)
+
+;;; This is the actual config file. It is omitted if it doesn't exist so emacs won't refuse to launch.
+(when (file-readable-p "~/.emacs.d/config.org")
+  (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+
+
+;; increase font size for better readability
+(set-face-attribute 'default nil :height 140)
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(setq ibuffer-expert t) ; stop yes no prompt on delete
+
+ (setq ibuffer-saved-filter-groups
+       (quote (
+	       ("default"
+	       ("dired" (mode . dired-mode))
+	       ("org" (mode . org-mode))
+	       ("magit" (name . "^magit"))
+	       ("planner" (or
+			  (name . "^\\*Calendar\\*$")
+			  (name . "^\\*Org Agenda\\*")))
+	       ("emacs" (or
+			  (name . "^\\*scratch\\*$")
+			  (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	    (ibuffer-switch-to-saved-filter-groups "default")))

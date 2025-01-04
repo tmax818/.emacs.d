@@ -1,0 +1,11 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/Dropbox/orgfiles/zettelkasten/chem_prep/20250106T141100--chem__prep.org")
+ (front-context-string . "#+title:      ch")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 26488 24801 346381 770000))
+)

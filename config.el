@@ -80,7 +80,7 @@
 :custom
 (citar-bibliography '("~/Dropbox/orgfiles/zettelkasten/bib/references.bib"))
 :config
-(setq citar-notes-paths '("~/Dropbox/orgfiles/zettelkasten")))
+(setq citar-notes-paths '("~/Dropbox/orgfiles/zettelkasten/reading_notes")))
 
 (use-package magit
 :ensure t
@@ -136,9 +136,3 @@
 )
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
-
-(with-eval-after-load 'org-capture
-(add-to-list 'org-capture-templates
-             '("n" "New note" plain (file denote-last-path)
-               (function (lambda () (denote-org-capture-with-prompts :title :keyword :date (concat denote-directory "/prep/"))))
-               :no-save t :immediate-finish nil :kill-buffer t :jump-to-captured t)))

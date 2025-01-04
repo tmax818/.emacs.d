@@ -1,1 +1,1 @@
-("~/physics/" "~/chemistry/")
+("~/.emacs.d/" "~/physics/" "~/chemistry/")

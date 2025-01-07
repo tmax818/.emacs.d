@@ -1,9 +1,12 @@
 #+title: config.org
 #+startup: overview latexpreview
 
+
 * Dear future Tyler,
 
 My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleDavesEmacs][Uncle Dave]]'s [[https://github.com/daedreth/UncleDavesEmacs/blob/master/init.el][init.el]]. This file comes from UD's [[https://github.com/daedreth/UncleDavesEmacs/blob/master/config.org][config.org]].
+
+
 
 
 * ui config
@@ -19,8 +22,8 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
 ** global settings
 
 #+begin_src emacs-lisp
-(global-visual-line-mode 1)
-(global-display-line-numbers-mode 1)
+;;(global-visual-line-mode 1)
+;;(global-display-line-numbers-mode 1)
 #+end_src
 
 
@@ -28,7 +31,7 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
 ** set ibuffer
 
 #+begin_src emacs-lisp
-  (global-set-key (kbd "C-x C-b") 'ibuffer) ; instead of buffer-list
+  ;;(global-set-key (kbd "C-x C-b") 'ibuffer) ; instead of buffer-list
   (setq ibuffer-expert t) ; stop yes no prompt on delete
 
    (setq ibuffer-saved-filter-groups
@@ -96,9 +99,18 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
 ** [[https://github.com/minad/vertico][vertico]]
 
 #+begin_src emacs-lisp
-(use-package vertico
-:ensure t
+  (use-package vertico
+    :ensure t
+    :custom
+    ;; (vertico-scroll-margin 0) ;; Different scroll margin
+    (vertico-count 10) ;; Show more candidates
+    ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
     :init (vertico-mode))
+
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 #+end_src
 
 ** [[https://github.com/minad/marginalia][marginalia]]
@@ -130,7 +142,10 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
 
 #+end_src
 
+
+
 ** mark-multiple
+
 
 #+begin_src emacs-lisp
 (use-package mark-multiple
@@ -139,6 +154,8 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
 #+end_src
 
 ** dashboard
+
+
 
 #+begin_src emacs-lisp
 (use-package dashboard
@@ -180,6 +197,22 @@ My [[file:init.el][init.el]] is inspired by [[https://github.com/daedreth/UncleD
   (setq git-commit-summary-max-length 50)
   :bind
   ("M-g" . magit-status))
+#+end_src
+
+
+
+
+
+
+
+** company
+
+#+begin_src emacs-lisp
+  (use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3))
 #+end_src
 
 
@@ -233,6 +266,8 @@ I did this before I broke down and used denote...
 	    
 #+end_src
 
+** org-capture-template
+
 #+begin_src emacs-lisp
     (setq org-capture-templates
 		'(
@@ -270,3 +305,13 @@ I did this before I broke down and used denote...
 
 
 * misc
+
+
+
+
+#+begin_src emacs-lisp
+    ;; Biblio package for adding BibTeX records and download publications
+  (use-package biblio)
+#+end_src
+
+

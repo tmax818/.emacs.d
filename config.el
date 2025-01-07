@@ -1,10 +1,10 @@
 ;; increase font size for better readability
 (set-face-attribute 'default nil :height 170)
 
-(global-visual-line-mode 1)
-(global-display-line-numbers-mode 1)
+;;(global-visual-line-mode 1)
+;;(global-display-line-numbers-mode 1)
 
-(global-set-key (kbd "C-x C-b") 'ibuffer) ; instead of buffer-list
+;;(global-set-key (kbd "C-x C-b") 'ibuffer) ; instead of buffer-list
 (setq ibuffer-expert t) ; stop yes no prompt on delete
 
  (setq ibuffer-saved-filter-groups
@@ -41,8 +41,17 @@
   :init (which-key-mode))
 
 (use-package vertico
-:ensure t
+    :ensure t
+    :custom
+    ;; (vertico-scroll-margin 0) ;; Different scroll margin
+    (vertico-count 10) ;; Show more candidates
+    ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
     :init (vertico-mode))
+
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 
 (use-package marginalia
   :ensure t
@@ -90,6 +99,12 @@
 :bind
 ("M-g" . magit-status))
 
+(use-package company
+:ensure t
+:config
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 3))
+
 (use-package denote
 :ensure t
 :config
@@ -136,3 +151,6 @@
 )
 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+
+;; Biblio package for adding BibTeX records and download publications
+(use-package biblio)
